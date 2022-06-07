@@ -31,7 +31,7 @@ module.exports = {
     plugins: [
         new HtmlWebPack({
             title: 'App de IMC',
-            template: './src/index.html',
+            template: './src/index.php',
         }),
     ],
 };
