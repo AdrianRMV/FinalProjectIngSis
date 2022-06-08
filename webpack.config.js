@@ -1,20 +1,15 @@
-const HtmlWebPack = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
     mode: 'development',
+    entry: "./src/index.js",
     output: {
         clean: true,
+        path: path.resolve(__dirname, "dist")
     },
 
     module: {
         rules: [
-            {
-                test: /\.html$/,
-                loader: 'html-loader',
-                options: {
-                    sources: false,
-                },
-            },
             {
                 use: ["style-loader", "css-loader", "sass-loader"],
                 test: /.(css|sass|scss)$/,
@@ -27,11 +22,4 @@ module.exports = {
     },
 
     optimization: {},
-
-    plugins: [
-        new HtmlWebPack({
-            title: 'App de IMC',
-            template: './src/index.php',
-        }),
-    ],
 };
