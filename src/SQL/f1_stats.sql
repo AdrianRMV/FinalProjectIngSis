@@ -13,6 +13,7 @@ drop table if exists equipos;
 -- ---------------------------------------------
 create table equipos(
 	id_equipo int primary key auto_increment,
+    imagen varchar(30),
     nombre varchar(30),
     pais varchar(30),
     director_deportivo varchar(30),
@@ -20,7 +21,8 @@ create table equipos(
     chasis_actual varchar(30),
     motor varchar(30),
     debut int,
-    campeonatos int
+    campeonatos int,
+    puntos int default 0
 )Engine = innodb;
 
 DELIMITER $$
@@ -55,18 +57,19 @@ select * from equipos order by campeonatos;
 
 create table pilotos(
 	id_piloto int primary key auto_increment,
+    imagen varchar(30),
     nombre varchar(30),
     numero int,
     nacionalidad varchar(30),
     nacimiento date,
     locacion_nacimiento varchar(50),
-    campeonatos int,
-    grandespremios int,	
-    victorias int,
-    podios int,
-    puntos int,
-    poles int,
-    vueltas_rapidas int,
+    campeonatos int default 0,
+    grandespremios int default 0,	
+    victorias int default 0,
+    podios int default 0,
+    puntos int default 0,
+    poles int default 0,
+    vueltas_rapidas int default 0,
     id_equipo int,
     constraint fk_idEquipo foreign key (id_equipo) references equipos(id_equipo)
 )Engine = innodb;
@@ -118,6 +121,7 @@ select* from pilotos;
 
 create table circuitos(
 	id_circuito int primary key auto_increment,
+    imagen varchar(30),
     nombre varchar(30),
     pais varchar(30),
     longitud varchar(30),
@@ -206,73 +210,12 @@ create table posiciones(
 )Engine = innodb;
 
 DELIMITER $$
-create procedure insert_posiciones(IN id_posiciones int,IN id_carrera int,IN id_circuito int, IN p1 int, IN p2 int, IN p3 int, IN p4 int, IN p5 int, IN p6 int, IN p7 int, IN p8 int, IN p9 int, IN p10 int,
+create procedure insert_posiciones(IN id_carrera int,IN id_circuito int, IN p1 int, IN p2 int, IN p3 int, IN p4 int, IN p5 int, IN p6 int, IN p7 int, IN p8 int, IN p9 int, IN p10 int,
     IN p11 int, IN p12 int, IN p13 int, IN p14 int, IN p15 int, IN p16 int, IN p17 int, IN p18 int, IN p19 int, IN p20 int,IN vuelta_rapida varchar(30))
 begin
 	call insert_carrera(id_circuito,round(1 + rand()*(19)));
 	insert into posiciones(id_carreras, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, vuelta_rapida) 
 	values (id_carrera, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, vuelta_rapida);
-end $$
-DELIMITER ;
-
--- --------------------------------------------------------------
-
-create table campeonato_pilotos(
-	annio int primary key,
-    p1 int, p2 int, p3 int, p4 int, p5 int, p6 int, p7 int, p8 int, p9 int, p10 int,
-    p11 int, p12 int, p13 int, p14 int, p15 int, p16 int, p17 int, p18 int, p19 int, p20 int,
-	constraint fk_pilotos1 foreign key (p1) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos2 foreign key (p2) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos3 foreign key (p3) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos4 foreign key (p4) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos5 foreign key (p5) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos6 foreign key (p6) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos7 foreign key (p7) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos8 foreign key (p8) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos9 foreign key (p9) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos10 foreign key (p10) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos11 foreign key (p11) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos12 foreign key (p12) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos13 foreign key (p13) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos14 foreign key (p14) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos15 foreign key (p15) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos16 foreign key (p16) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos17 foreign key (p17) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos18 foreign key (p18) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos19 foreign key (p19) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_pilotos20 foreign key (p20) references pilotos(id_piloto) on delete cascade on update cascade
-)Engine = innodb;
-
-DELIMITER $$
-create procedure insert_campeonato_pilotos(IN annio int, IN p1 int, IN p2 int, IN p3 int, IN p4 int, IN p5 int, IN p6 int, IN p7 int, IN p8 int, IN p9 int, IN p10 int,
-    IN p11 int, IN p12 int, IN p13 int, IN p14 int, IN p15 int, IN p16 int, IN p17 int, IN p18 int, IN p19 int, IN p20 int)
-begin
-	insert into campeonato_pilotos(annio,p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20) 
-	values (annio,p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20);
-end $$
-DELIMITER ;
-
--- -------------------------------------------------------------------------------------------------------------
-create table campeonato_constructores(
-	annio int primary key,
-    p1 int, p2 int, p3 int, p4 int, p5 int, p6 int, p7 int, p8 int, p9 int, p10 int,
-    constraint fk__equipo1 foreign key (p1) references equipos(id_equipo) on delete cascade on update cascade,
-	constraint fk__equipo2 foreign key (p2) references equipos(id_equipo) on delete cascade on update cascade,
-    constraint fk__equipo3 foreign key (p3) references equipos(id_equipo) on delete cascade on update cascade,
-    constraint fk__equipo4 foreign key (p4) references equipos(id_equipo) on delete cascade on update cascade,
-    constraint fk__equipo5 foreign key (p5) references equipos(id_equipo) on delete cascade on update cascade,
-    constraint fk__equipo6 foreign key (p6) references equipos(id_equipo) on delete cascade on update cascade,
-    constraint fk__equipo7 foreign key (p7) references equipos(id_equipo) on delete cascade on update cascade,
-    constraint fk__equipo8 foreign key (p8) references equipos(id_equipo) on delete cascade on update cascade,
-    constraint fk__equipo9 foreign key (p9) references equipos(id_equipo) on delete cascade on update cascade,
-    constraint fk__equipo10 foreign key (p10) references equipos(id_equipo) on delete cascade on update cascade
-)Engine = innodb;
-
-DELIMITER $$
-create procedure insert_campeonato_constructores(IN annio int, IN p1 int, IN p2 int, IN p3 int, IN p4 int, IN p5 int, IN p6 int, IN p7 int, IN p8 int, IN p9 int, IN p10 int)
-begin
-	insert into campeonato_constructores(annio, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10) 
-	values (annio, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10);
 end $$
 DELIMITER ;
 
@@ -299,13 +242,82 @@ begin
 
 end $$
 DELIMITER ;
+-- ----------------------------------------------------
 
-call insert_posiciones(2022,1,1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,"1:25.234");
+drop function if exists obtener_Campeon_pilotos;
+DELIMITER $$
+create function obtener_Campeon_pilotos()
+returns int
+begin
+	declare id_campeon int;
+    select id_piloto from pilotos where puntos = (select max(puntos) from pilotos) into id_campeon;
+    return id_campeon;
+end $$
+DELIMITER ;
+
+
+-- ---------------------------------------------------
+drop function if exists obtener_Campeon_equipos;
+DELIMITER $$
+create function obtener_Campeon_equipos()
+returns int
+begin
+	declare id_campeon int;
+    select id_equipo from equipos where puntos = (select max(puntos) from equipos) into id_campeon;
+    return id_campeon;
+end $$
+DELIMITER ;
+
+-- ---------------------------------------------------
+-- ----------------------------------------------------
+-- ----------------------------------------------------
+
+drop function if exists obtener_piloto_mas_campeonatos;
+DELIMITER $$
+create function obtener_piloto_mas_campeonatos()
+returns int
+begin
+	declare id_campeon int;
+    select id_piloto from pilotos where campeonatos = (select max(campeonatos) from pilotos) into id_campeon;
+    return id_campeon;
+end $$
+DELIMITER ;
+
+-- ----------------------------------------------------
+
+
+
+drop trigger if exists tg_insert_equipos;
+DELIMITER $$
+create trigger tg_insert_equipos
+after insert on posiciones for each row
+begin
+	update equipos set puntos = puntos + 25 where id_equipo = (select id_equipo from pilotos where id_piloto = new.p1);
+	update equipos set puntos = puntos + 18 where id_equipo = (select id_equipo from pilotos where id_piloto = new.p2);
+	update equipos set puntos = puntos + 15 where id_equipo = (select id_equipo from pilotos where id_piloto = new.p3);
+	update equipos set puntos = puntos + 12 where id_equipo = (select id_equipo from pilotos where id_piloto = new.p4);
+	update equipos set puntos = puntos + 10 where id_equipo = (select id_equipo from pilotos where id_piloto = new.p5);
+	update equipos set puntos = puntos + 8 where id_equipo = (select id_equipo from pilotos where id_piloto = new.p6);
+	update equipos set puntos = puntos + 6 where id_equipo = (select id_equipo from pilotos where id_piloto = new.p7);
+	update equipos set puntos = puntos + 4 where id_equipo = (select id_equipo from pilotos where id_piloto = new.p8);
+	update equipos set puntos = puntos + 2 where id_equipo = (select id_equipo from pilotos where id_piloto = new.p9);
+	update equipos set puntos = puntos + 1 where id_equipo = (select id_equipo from pilotos where id_piloto = new.p10);
+end $$
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+-- ----------------------------------------------------
+call insert_posiciones(1,1,9,1,8,2,7,3,6,4,5,10,11,12,13,14,15,16,17,18,19,20,"1:25.234");
 
 select pilotos.numero,pilotos.nombre,pilotos.nacionalidad from posiciones inner join pilotos;
 
-select * from posiciones;
+select * from equipos order by puntos desc;
 
-select * from carreras;
-
-select * from pilotos;
+select * from pilotos order by puntos desc;
