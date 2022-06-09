@@ -1,5 +1,5 @@
 // Variables
-$primary-color:  rgb(46, 46, 46);
+$primary-color: rgb(46, 46, 46);
 $secondary-color: #f11c04;
 
 $webfont: 'Montserrat', sans-serif;
@@ -42,6 +42,7 @@ body {
     font-family: $webfont !important;
 }
 
+// Header section
 header {
     background-color: $primary-color;
     height: 85px;
@@ -64,6 +65,29 @@ header {
 
         img {
             width: 245px;
+        }
+    }
+    .social-medias {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        a:nth-child(1){
+            margin-right: 15px;
+        }
+        a{
+            &:hover{
+                i{
+                    color: $secondary-color;
+                    transform: scale(1.1);
+                }
+            }
+        }
+        i {
+            color: #fff;
+            font-size: 30px;
+            transition: 150ms linear
         }
     }
 }
