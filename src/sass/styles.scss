@@ -157,3 +157,9 @@ header {
     border-top: 1px solid #000;
     background-color: $secondary-color;
 }
+
+.hidden{
+    display: none;
+    transition: 300ms ease-in-out;
+    opacity: 0;
+}

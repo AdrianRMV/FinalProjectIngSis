@@ -1,6 +1,5 @@
 <?php
-
-include_once 'db.php';
+include_once './src/php/api/db.php';
 
 class Querys extends DB
 {
