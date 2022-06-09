@@ -13,7 +13,8 @@
 <!-- Carreras section -->
 <?php require_once './src/php/templates/carreras.php'; ?>
 
-<?php require_once './src/php/api/apipeticiones.php'; ?>
+<!-- Footer section -->
+<?php require_once './src/php/templates/footer.php'; ?>
 
 <!-- Footer HTML structure -->
-<?php require_once './src/php/templates/footer.php'; ?>
+<?php require_once './src/php/templates/footerHTML.php'; ?>
