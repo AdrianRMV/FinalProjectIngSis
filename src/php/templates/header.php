@@ -1,5 +1,5 @@
 <header>
-     <div class='logo-container'>
-          <img src='<?= $_SERVER["DOCUMENT_ROOT"] ?>/FinalProjectIngSis/src/php/templates/eliminar.png' alt='No lo encontre'>
-     </div>
+     <a href="#" class='logo-container'>
+          <img src='http://localhost/src/images/f1logo.png' alt='f1 logo' class="img-fluid" width="50px" height="auto">
+     </a>
 </header>

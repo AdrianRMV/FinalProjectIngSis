@@ -1,12 +1,159 @@
-html,body{
-    margin: 0;
-}
-
+// Variables
 $primary-color: #15151f;
 $secondary-color: #f11c04;
 
-// $font-primary:;
+$webfont: 'Montserrat', sans-serif;
 
-div{
-    color: $secondary-color;    
+// FUNCTIONS
+@function responsiveVw($medida) {
+    $var: $medida * 0.08;
+    @return $var + vw;
+}
+
+@function line-height($font-size, $line-spacing) {
+    $var: $line-spacing / $font-size;
+    @return $var;
+}
+
+@function responsive-px($min-px, $max-px, $min-vw, $max-vw) {
+    @return calc(
+        #{$min-px}px + (#{$max-px} - #{$min-px}) *
+            ((100vw - #{$min-vw}px) / (#{$max-vw} - #{$min-vw}))
+    );
+}
+
+@mixin container-custom {
+    width: 100%;
+    box-sizing: border-box;
+    @media (min-width: 768px) {
+        width: responsive-px(750, 1495, 768, 1920);
+        margin: 0 auto;
+    }
+}
+
+.container {
+    @include container-custom();
+}
+
+html,
+body {
+    margin: 0;
+    background-color: #dddd;
+    font-family: $webfont !important;
+}
+
+header {
+    background-color: $primary-color;
+    height: 50px;
+    position: relative;
+
+    .logo-container {
+        background-color: #fff;
+        width: max-content;
+        padding: 15px 30px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        height: 70px;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 100px;
+        }
+    }
+}
+
+// Search section
+.inputs-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 43px 0 20px 0;
+    .form-select {
+        width: 25% !important;
+        margin-right: 15px;
+        font-size: 10px !important;
+    }
+
+    // Button search styles
+    .search-button {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        background: #183153;
+        font-family: 'Montserrat', sans-serif;
+        box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        border: none;
+    }
+
+    .search-button:after {
+        content: ' ';
+        width: 0%;
+        height: 100%;
+        background: #ed0404;
+        position: absolute;
+        transition: all 0.4s ease-in-out;
+        right: 0;
+    }
+
+    .search-button:hover::after {
+        right: auto;
+        left: 0;
+        width: 100%;
+    }
+
+    .search-button span {
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 600;
+        letter-spacing: 0.3em;
+        z-index: 20;
+        transition: all 0.3s ease-in-out;
+        height: auto;
+        display: flex;
+        width: max-content;
+        font-size: 7px;
+        padding: 5px 7px;
+        font-family: $webfont;
+    }
+
+    .search-button:hover span {
+        color: #fff;
+        animation: scaleUp 0.3s ease-in-out;
+    }
+
+    @keyframes scaleUp {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(0.95);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+}
+
+// Pilotos Section
+.pilotos_circuitos_view {
+    height: 200px;
+    border-top: 1px solid #000;
+    background-color: $secondary-color;
+}
+.carreras_view {
+    height: 200px;
+    border-top: 1px solid #000;
+    background-color: $secondary-color;
 }
