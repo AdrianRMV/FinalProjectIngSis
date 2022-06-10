@@ -26,7 +26,7 @@ class ApiPilotos
           while ($fila = $res->fetch_assoc()) {
                $items = array(
                     'id' => $fila['id_circuito'],
-                    'nombre' => $fila['nombre'],
+                    'pais' => $fila['pais'],
                );
                array_push($circuitos, $items);
           }
