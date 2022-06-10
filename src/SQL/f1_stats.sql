@@ -25,7 +25,7 @@ create procedure insert_usuarios(
     IN pass varchar(30)
 )
 begin
-	insert into equipos(email,pass)values(email,pass);
+	insert into usuarios(email,pass)values(email,pass);
 end $$
 DELIMITER ;
 
