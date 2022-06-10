@@ -1,7 +1,7 @@
 <?php
 include_once './src/php/api/querys.php';
 
-class ApiPilotos
+class ApiRest
 {
      function getPilotos()
      {
@@ -48,7 +48,7 @@ class ApiPilotos
      }
 }
 
-$test = new ApiPilotos();
+$test = new ApiRest();
 $arrayPilotos = $test->getPilotos();
 $arrayCircuitos = $test->getCircuitos();
 $arrayEquipos = $test->getEquipos();
