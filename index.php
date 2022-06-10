@@ -1,3 +1,6 @@
+<!-- INTEGRANTES: ADRIAN RAMIREZ VAZQUEZ, JAVIER MURILLO COTA, ROMEL GAMALLO PERALTA -->
+<!-- Importa todo los componentes necesarios para un mejor orden -->
+
 <!-- Head HTML structure -->
 <?php require_once './src/php/templates/head.php'; ?>
 
