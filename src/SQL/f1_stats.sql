@@ -11,6 +11,25 @@ drop table if exists circuitos;
 drop table if exists pilotos;
 drop table if exists equipos;
 -- ---------------------------------------------
+drop table if exists usuarios;
+create table usuarios(
+	id_usuario int primary key auto_increment,
+    email varchar(30),
+    pass varchar(30)
+)Engine = innodb;
+
+drop procedure if exists insert_usuarios;
+DELIMITER $$
+create procedure insert_usuarios(
+	IN email varchar(30),
+    IN pass varchar(30)
+)
+begin
+	insert into equipos(email,pass)values(email,pass);
+end $$
+DELIMITER ;
+
+-- ---------------------------------------------
 create table equipos(
 	id_equipo int primary key auto_increment,
     imagen varchar(30),
