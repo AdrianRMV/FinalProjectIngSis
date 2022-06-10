@@ -1,4 +1,6 @@
+<!-- PROYECTO FINAL -->
 <!-- INTEGRANTES: ADRIAN RAMIREZ VAZQUEZ, JAVIER MURILLO COTA, ROMEL GAMALLO PERALTA -->
+<!-- Fecha Entrega:  Martes 14 de Junio 2022-->
 <!-- Importa todo los componentes necesarios para un mejor orden -->
 
 <!-- Head HTML structure -->

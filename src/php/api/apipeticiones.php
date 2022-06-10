@@ -18,7 +18,8 @@ class ApiRest
           }
           return $pilotos;
      }
-     function getCircuitos(){
+     function getCircuitos()
+     {
           $circuito = new Querys();
           $circuitos = array();
 
@@ -32,7 +33,8 @@ class ApiRest
           }
           return $circuitos;
      }
-     function getEquipos(){
+     function getEquipos()
+     {
           $equipo = new Querys();
           $equipos = array();
 
@@ -53,4 +55,10 @@ $arrayPilotos = $test->getPilotos();
 $arrayCircuitos = $test->getCircuitos();
 $arrayEquipos = $test->getEquipos();
 
-?>
+// if (isset($_POST['years'])) {
+//      echo "<script>console.log('".$_POST['years']."')</script>";
+// } else {
+//      echo "task option is required";
+//      exit;
+// }
+

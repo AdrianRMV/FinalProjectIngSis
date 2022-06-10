@@ -9,11 +9,11 @@ const form_pilotos = document.querySelector('.form_piloto');
 const form_equipos = document.querySelector('.form_equipo');
 
 // Formulario principal
-const submit_primary_form = document.querySelector('.search-form-all');
+// const submit_primary_form = document.querySelector('.search-form-all');
 
-submit_primary_form.addEventListener('submit', (event) => {
-    event.preventDefault();
-});
+// submit_primary_form.addEventListener('submit', (event) => {
+//     event.preventDefault();
+// });
 
 
 opcion_circuito.addEventListener('click', () => {
