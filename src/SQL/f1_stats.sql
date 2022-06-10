@@ -41,7 +41,8 @@ create table equipos(
     motor varchar(30),
     debut int,
     campeonatos int,
-    puntos int default 0
+    puntos int default 0,
+    constraint ck_campeonatos_equipos check (campeonatos >= 0)
 )Engine = innodb;
 
 DELIMITER $$
@@ -90,6 +91,7 @@ create table pilotos(
     poles int default 0,
     vueltas_rapidas int default 0,
     id_equipo int,
+    constraint ck_campeonatos_pilotos check (campeonatos >= 0),
     constraint fk_idEquipo foreign key (id_equipo) references equipos(id_equipo)
 )Engine = innodb;
 
@@ -146,7 +148,8 @@ create table circuitos(
     longitud varchar(30),
     vueltas int,
     distancia_total varchar(30),
-    record_vuelta varchar(30)
+    record_vuelta varchar(30),
+    constraint ck_vueltas_circuitos check (vueltas >= 0)
 )Engine = innodb;
 
 DELIMITER $$
@@ -225,7 +228,27 @@ create table posiciones(
     constraint fk_p17 foreign key (p17) references pilotos(id_piloto) on delete cascade on update cascade,
     constraint fk_p18 foreign key (p18) references pilotos(id_piloto) on delete cascade on update cascade,
     constraint fk_p19 foreign key (p19) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_p20 foreign key (p20) references pilotos(id_piloto) on delete cascade on update cascade
+    constraint fk_p20 foreign key (p20) references pilotos(id_piloto) on delete cascade on update cascade,
+    constraint ck_p1_posiciones check (p1 > 0),
+    constraint ck_p2_posiciones check (p2 > 0),
+    constraint ck_p3_posiciones check (p3 > 0),
+    constraint ck_p4_posiciones check (p4 > 0),
+    constraint ck_p5_posiciones check (p5 > 0),
+    constraint ck_p6_posiciones check (p6 > 0),
+    constraint ck_p7_posiciones check (p7 > 0),
+    constraint ck_p8_posiciones check (p8 > 0),
+    constraint ck_p9_posiciones check (p9 > 0),
+    constraint ck_p10_posiciones check (p10 > 0),
+    constraint ck_p11_posiciones check (p11 > 0),
+    constraint ck_p12_posiciones check (p12 > 0),
+    constraint ck_p13_posiciones check (p13 > 0),
+    constraint ck_p14_posiciones check (p14 > 0),
+    constraint ck_p15_posiciones check (p15 > 0),
+    constraint ck_p16_posiciones check (p16 > 0),
+    constraint ck_p17_posiciones check (p17 > 0),
+    constraint ck_p18_posiciones check (p18 > 0),
+    constraint ck_p19_posiciones check (p19 > 0),
+    constraint ck_p20_posiciones check (p20 > 0)
 )Engine = innodb;
 
 DELIMITER $$
@@ -304,8 +327,6 @@ DELIMITER ;
 
 -- ----------------------------------------------------
 
-
-
 drop trigger if exists tg_insert_equipos;
 DELIMITER $$
 create trigger tg_insert_equipos
@@ -323,14 +344,6 @@ begin
 	update equipos set puntos = puntos + 1 where id_equipo = (select id_equipo from pilotos where id_piloto = new.p10);
 end $$
 DELIMITER ;
-
-
-
-
-
-
-
-
 
 -- ----------------------------------------------------
 call insert_posiciones(1,1,9,1,8,2,7,3,6,4,5,10,11,12,13,14,15,16,17,18,19,20,"1:25.234");
