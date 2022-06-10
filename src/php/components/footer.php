@@ -36,11 +36,15 @@
                 </a>
             </div>
             <div class="col-md-3 login-info">
-                <span>Username: </span><input type="text" placeholder="adrian@gmail.com">
-                <br>
-                <span>Password: </span><input type="password" placeholder="********">
-                <br>
-                <button class="btn-login">Login</button>
+                <form action="" method="POST" enctype="multipart/form">
+                    <label for="correo">Username: </label>
+                    <input type="email" name="correo" required="required" placeholder="adrian@gmail.com">
+                    <br>
+                    <label for="password">Password: </label>
+                    <input type="password" name="password" required="required" placeholder="********">
+                    <br>
+                    <input type="submit" value="Login"  class="btn-login"></input>
+                </form>
             </div>
         </div>
 </footer>
