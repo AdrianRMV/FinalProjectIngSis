@@ -73,12 +73,12 @@ header {
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        a:nth-child(1){
+        a:nth-child(1) {
             margin-right: 15px;
         }
-        a{
-            &:hover{
-                i{
+        a {
+            &:hover {
+                i {
                     color: $secondary-color;
                     transform: scale(1.1);
                 }
@@ -87,9 +87,17 @@ header {
         i {
             color: #fff;
             font-size: 30px;
-            transition: 150ms linear
+            transition: 150ms linear;
         }
     }
+}
+
+// Form principal
+.search-form-all {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 // Search section
@@ -116,58 +124,16 @@ header {
         box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
         overflow: hidden;
         border: none;
-    }
-
-    .search-button:after {
-        content: ' ';
-        width: 0%;
-        height: 100%;
-        background: #ed0404;
-        position: absolute;
-        transition: all 0.4s ease-in-out;
-        right: 0;
-    }
-
-    .search-button:hover::after {
-        right: auto;
-        left: 0;
-        width: 100%;
-    }
-
-    .search-button span {
-        text-align: center;
-        text-decoration: none;
+        width: 160px;
+        height: 50px;
         color: #fff;
-        font-weight: 600;
-        letter-spacing: 0.3em;
-        z-index: 20;
-        transition: all 0.3s ease-in-out;
-        height: auto;
-        display: flex;
-        width: max-content;
-        font-size: 15px;
-        padding: 7px 11px;
-        font-family: $webfont;
+        transition: 150ms linear;
     }
 
-    .search-button:hover span {
-        color: #fff;
-        animation: scaleUp 0.3s ease-in-out;
+    .search-button:hover {
+        background-color: $secondary-color;
     }
 
-    @keyframes scaleUp {
-        0% {
-            transform: scale(1);
-        }
-
-        50% {
-            transform: scale(0.95);
-        }
-
-        100% {
-            transform: scale(1);
-        }
-    }
 }
 
 // Pilotos Section

@@ -18,7 +18,8 @@ class ApiForm
           }
           return $pilotos;
      }
-     function getCircuitos(){
+     function getCircuitos()
+     {
           $circuito = new Querys();
           $circuitos = array();
 
@@ -32,7 +33,8 @@ class ApiForm
           }
           return $circuitos;
      }
-     function getEquipos(){
+     function getEquipos()
+     {
           $equipo = new Querys();
           $equipos = array();
 
