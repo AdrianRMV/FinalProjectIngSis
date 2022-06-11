@@ -1,7 +1,7 @@
 <?php
 include_once './src/php/api/querys.php';
 
-class ApiRest
+class ApiForm
 {
      function getPilotos()
      {
@@ -50,15 +50,7 @@ class ApiRest
      }
 }
 
-$test = new ApiRest();
+$test = new ApiForm();
 $arrayPilotos = $test->getPilotos();
 $arrayCircuitos = $test->getCircuitos();
 $arrayEquipos = $test->getEquipos();
-
-// if (isset($_POST['years'])) {
-//      echo "<script>console.log('".$_POST['years']."')</script>";
-// } else {
-//      echo "task option is required";
-//      exit;
-// }
-

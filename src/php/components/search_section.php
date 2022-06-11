@@ -1,6 +1,4 @@
-<!-- Seccion que se encarga de crear los campos de seleccion para la busqueda de las tablas -->
-
-<?php require_once './src/php/api/apipeticiones.php'; ?>
+<?php require_once './src/php/api/apiForm.php'; ?>
 
 <section class="inputs-search container">
 
@@ -122,9 +120,4 @@
     </script>
 
     <button class="search-button">BUSCAR</button>
-
-
-
-    </form>
-
 </section>
