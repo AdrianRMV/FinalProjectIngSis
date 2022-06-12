@@ -47,7 +47,7 @@ create table equipos(
 
 DELIMITER $$
 create procedure insert_equipos(
-	IN imagen varchar(30),
+	IN imagen varchar(100),
 	IN nombre varchar(30),
     IN pais varchar(30),
     IN director_deportivo varchar(30),
@@ -98,7 +98,7 @@ create table pilotos(
 )Engine = innodb;
 DELIMITER $$
 create procedure insert_pilotos(
-	IN imagen varchar(30),
+	IN imagen varchar(100),
 	IN nombre varchar(30),
     IN numero int,
     IN nacionalidad varchar(30),
@@ -156,7 +156,7 @@ create table circuitos(
 )Engine = innodb;
 
 DELIMITER $$
-create procedure insert_circuito(IN imagen varchar(30),IN nombre varchar(30), IN pais varchar(30), IN longitud varchar(30),IN vueltas int,IN distancia_total varchar(30),IN record_vuelta varchar(30))
+create procedure insert_circuito(IN imagen varchar(100),IN nombre varchar(30), IN pais varchar(30), IN longitud varchar(30),IN vueltas int,IN distancia_total varchar(30),IN record_vuelta varchar(30))
 begin
 	insert into circuitos(imagen,nombre,pais,longitud,vueltas,distancia_total,record_vuelta) values(imagen,nombre,pais,longitud,vueltas,distancia_total,record_vuelta);
 end $$
