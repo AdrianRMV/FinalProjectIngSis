@@ -1,6 +1,8 @@
 <?php
 // incluimos el codigo de querys.php para obtener las peticiones a la BD
-include_once './querys.php';
+// include (API."/querys.php");
+
+require __DIR__ . "/querys.php";
 
 // creamos clase apirest
 class ApiRest
@@ -28,6 +30,7 @@ class ApiRest
                );
                array_push($carreras["info"], $items);
           }
+
           $res = $query->get_posiciones($id_circuito);
           while ($fila = $res->fetch_assoc()) {
                $items = array(

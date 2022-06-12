@@ -1,4 +1,4 @@
-<?php include_once '../api/apiForm.php'; ?>
+<?php include_once './src/php/api/apiForm.php'; ?>
 
 <section class="inputs-search container">
 

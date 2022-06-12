@@ -1,6 +1,6 @@
 <?php
 
-include_once './apiTable.php';
+require __DIR__ . "/apiTable.php";
 
 $id_carrera = 0;
 
@@ -12,3 +12,7 @@ if (isset($_POST['id_carrera'])) {
      echo json_encode($arrayCircuito);
      return $arrayCircuito;
 }
+
+$test = new ApiRest();
+$arrayCircuito = $test->get_table_Carreras(1);
+echo json_encode($arrayCircuito);

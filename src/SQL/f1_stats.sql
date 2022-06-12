@@ -251,7 +251,6 @@ create trigger tg_insert_posiciones
 after insert on posiciones for each row
 begin
 	declare vuelta_rapida int;
-    call insert_carrera(id_circuito,round(1 + rand()*(19)));
     select piloto_vuelta_rapida from carreras where id_carrera = new.id_carreras into vuelta_rapida;
     update pilotos set vueltas_rapidas = vueltas_rapidas + 1  where id_piloto = vuelta_rapida;
 	update pilotos set grandespremios = grandespremios + 1, victorias = victorias + 1, podios = podios + 1 ,puntos = puntos + 25 where id_piloto = new.p1;

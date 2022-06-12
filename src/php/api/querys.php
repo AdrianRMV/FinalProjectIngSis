@@ -1,5 +1,10 @@
 <?php
-include_once './db.php';
+// include_once "./src/php/components/paths.php";
+// $path = "./src/php/components/paths.php";
+// // echo "Path : $path";
+// require "$path";
+// echo __DIR__;
+require __DIR__ . "/db.php";
 
 class Querys extends DB
 {
@@ -53,7 +58,7 @@ class Querys extends DB
      }
      function get_equipo($id_equipo)
      {
-          $res = $this->connect()->query("SELECT * FROM equipos WHERE id_equipo = {$id_equipo}");
+          $res = $this->connect()->query("SELECT * FROM equipos WHER Eid_equipo = {$id_equipo}");
           return $res;
      }
      function get_piloto_en_carrera($id_piloto)

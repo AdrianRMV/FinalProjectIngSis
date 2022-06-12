@@ -1,6 +1,6 @@
 <?php
 
-include_once './apiTable.php';
+include_once './src/php/api/apiTable.php';
 
 
 
