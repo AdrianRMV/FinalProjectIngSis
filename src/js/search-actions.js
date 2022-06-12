@@ -37,8 +37,8 @@ btn_search.addEventListener('click', (event) => {
                 'Content-Type': 'multipart/form-data',
             },
         })
-            .then((info) => {
-                console.log("Me llego bien pero no se qopd" + info.data);
+            .then((response) => {
+                console.log("Me llego bien pero no se qopd" + JSON.stringify(response.data));
             })
             .catch((error) => {
                 console.log(error);

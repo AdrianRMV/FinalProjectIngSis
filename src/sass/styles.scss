@@ -133,14 +133,31 @@ header {
     .search-button:hover {
         background-color: $secondary-color;
     }
-
 }
 
 // Pilotos Section
 .pilotos_circuitos_view {
-    height: 350px;
+    // height: 350px;
     border-top: 1px solid #000;
     background-color: $secondary-color;
+
+    // Busqueda sea igual a circuito:
+    .info-circuito {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: max-content;
+        margin: 0 auto;
+        padding: 20px 190px;
+        background: blue;
+        .info-circuito-img {
+            width: 366px;
+        }
+        .info-circuito-text {
+            padding-top: 20px;
+        }
+    }
 }
 .carreras_view {
     height: 350px;
