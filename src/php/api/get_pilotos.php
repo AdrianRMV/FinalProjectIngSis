@@ -1,6 +1,5 @@
 <?php
-
-include_once './src/php/api/apiTable.php';
+require __DIR__ . "/apiTable.php";
 
 $id_piloto = 0;
 
@@ -12,3 +11,8 @@ if (isset($_POST['id_piloto'])) {
      echo json_encode($arrayCircuito);
      return $arrayCircuito;
 }
+
+$test = new ApiRest();
+$arrayCircuito = $test->get_table_piloto(9);
+echo json_encode($arrayCircuito);
+return $arrayCircuito;

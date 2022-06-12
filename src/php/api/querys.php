@@ -43,7 +43,8 @@ class Querys extends DB
                UNION ALL
                SELECT pilotos.numero,pilotos.nombre,pilotos.nacionalidad,2 AS 'puntos' FROM posiciones INNER JOIN pilotos WHERE id_posiciones = " . $id_carrera . " AND p9 = id_piloto
                UNION ALL
-               SELECT pilotos.numero,pilotos.nombre,pilotos.nacionalidad,1 AS 'puntos' FROM posiciones INNER JOIN pilotos WHERE id_posiciones = " . $id_carrera . " AND p10 = id_piloto AND id_carreras =" . $id_carrera);
+               SELECT pilotos.numero,pilotos.nombre,pilotos.nacionalidad,1 AS 'puntos' FROM posiciones INNER JOIN pilotos WHERE id_posiciones = " . $id_carrera . " AND p10 = id_piloto");
+          // AND id_carreras =" . $id_carrera
           return $res;
      }
      function get_circuito($id_circuito)
@@ -58,7 +59,7 @@ class Querys extends DB
      }
      function get_equipo($id_equipo)
      {
-          $res = $this->connect()->query("SELECT * FROM equipos WHER Eid_equipo = {$id_equipo}");
+          $res = $this->connect()->query("SELECT * FROM equipos WHERE id_equipo = " . $id_equipo);
           return $res;
      }
      function get_piloto_en_carrera($id_piloto)

@@ -1,6 +1,6 @@
 <?php
 
-include_once './src/php/api/apiTable.php';
+require __DIR__ . "/apiTable.php";
 
 
 
