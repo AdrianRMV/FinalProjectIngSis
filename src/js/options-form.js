@@ -39,16 +39,4 @@ opcion_equipos.addEventListener('click', () => {
     }
 });
 
-// Traer info de los selecets principales
-// let annio = "2022";
-// let opcion_default1= "Circuito";
-// let opcion_default2= "ALL";
-
-// function updateYears(){
-//     let selectAnnio = document.getElementById("years-select");
-//     annio = selectAnnio.options[selectAnnio.selectedIndex].text;
-//     console.log(annio);
-// } 
-
-// updateYears();
 

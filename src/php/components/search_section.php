@@ -69,7 +69,7 @@
             let selectCarrera = document.getElementById("carreras-select");
             carrera = selectCarrera.options[selectCarrera.selectedIndex];
 
-            let inputCarrera = document.getElementById("carreraInputHide").value = carrera.text;
+            let inputCarrera = document.getElementById("carreraInputHide").value = carrera.value;
             console.log(inputCarrera);
         }
         updateCarrera();
@@ -91,7 +91,7 @@
             let selectPiloto = document.getElementById("pilotos-select");
             piloto = selectPiloto.options[selectPiloto.selectedIndex];
 
-            let inputPiloto = document.getElementById("pilotoInputHide").value = piloto.text;
+            let inputPiloto = document.getElementById("pilotoInputHide").value = piloto.value;
             console.log(inputPiloto);
         }
         updatePiloto();
@@ -113,7 +113,7 @@
             let selectEquipo = document.getElementById("equipos-select");
             equipo = selectEquipo.options[selectEquipo.selectedIndex];
 
-            let inputEquipo = document.getElementById("equipoInputHide").value = equipo.text;
+            let inputEquipo = document.getElementById("equipoInputHide").value = equipo.value;
             console.log(inputEquipo);
         }
         updateEquipo();
