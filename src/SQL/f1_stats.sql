@@ -145,7 +145,7 @@ select* from pilotos;
 
 create table circuitos(
 	id_circuito int primary key auto_increment,
-    imagen varchar(30),
+    imagen varchar(100),
     nombre varchar(30),
     pais varchar(30),
     longitud varchar(30),
@@ -238,12 +238,14 @@ DELIMITER $$
 create procedure insert_posiciones(IN id_circuito int, IN p1 int, IN p2 int, IN p3 int, IN p4 int, IN p5 int, IN p6 int, IN p7 int, IN p8 int, IN p9 int, IN p10 int,
     IN p11 int, IN p12 int, IN p13 int, IN p14 int, IN p15 int, IN p16 int, IN p17 int, IN p18 int, IN p19 int, IN p20 int,IN vuelta_rapida varchar(30))
 begin
+	declare _id_carrera int;
 	call insert_carrera(id_circuito,round(1 + rand()*(19)));
-	insert into posiciones(id_carreras, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, vuelta_rapida) 
-	values (id_carrera, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, vuelta_rapida);
+    select id_carrera from carreras order by id_carrera desc limit 1 into _id_carrera;
+	insert into posiciones(id_carreras,p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, vuelta_rapida) 
+	values (_id_carrera,p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, vuelta_rapida);
 end $$
 DELIMITER ;
-
+-- ------------------------------------------------
 -- ----------------------------------------------
 drop trigger if exists tg_insert_posiciones;
 DELIMITER $$
@@ -263,7 +265,6 @@ begin
     update pilotos set grandespremios = grandespremios + 1, puntos = puntos + 4 where id_piloto = new.p8;
     update pilotos set grandespremios = grandespremios + 1, puntos = puntos + 2 where id_piloto = new.p9;
     update pilotos set grandespremios = grandespremios + 1, puntos = puntos + 1 where id_piloto = new.p10;
-
 end $$
 DELIMITER ;
 -- ----------------------------------------------------
@@ -328,8 +329,12 @@ end $$
 DELIMITER ;
 -- ----------------------------------------------------
 -- ----------------------------------------------------
--- call insert_posiciones(1,9,1,8,2,7,3,6,4,5,10,11,12,13,14,15,16,17,18,19,20,"1:25.234");
--- call insert_posiciones(2,10,20,9,19,8,18,7,17,16,6,15,5,13,14,4,3,12,2,11,1,"1:15.534");
+call insert_posiciones(1,9,1,8,2,7,3,6,4,5,10,11,12,13,14,15,16,17,18,19,20,"1:25.234");
+call insert_posiciones(2,10,20,9,19,8,18,7,17,16,6,15,5,13,14,4,3,12,2,11,1,"1:15.534");
+call insert_posiciones(3,9,1,8,2,7,3,6,4,5,10,11,12,13,14,15,16,17,18,19,20,"1:25.234");
+call insert_posiciones(4,11,20,9,19,8,18,7,17,16,6,15,5,13,14,4,3,12,2,10,1,"1:15.534");
+call insert_posiciones(5,12,1,8,2,7,3,6,4,5,10,11,9,13,14,15,16,17,18,19,20,"1:25.234");
+call insert_posiciones(6,9,20,9,19,8,18,7,17,16,10,15,5,13,14,4,3,12,2,11,1,"1:15.534");
 
 
 select * from posiciones;
