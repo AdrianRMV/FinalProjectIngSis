@@ -1,9 +1,14 @@
 <?php
 
-// include_once './src/php/api/apiTable.php';
+include_once './apiTable.php';
 
-// $test = new ApiRest();
-// $arrayCircuito = $test->get_table_Carreras($id_circuito);
-// echo json_encode($arrayCircuito);
+$id_carrera = 0;
 
-echo $link = "http://$_SERVER[HTTP_HOST]";
+if (isset($_POST['id_carrera'])) {
+     $id_carrera = $_POST['id_carrera'];
+
+     $test = new ApiRest();
+     $arrayCircuito = $test->get_table_Carreras(1);
+     echo json_encode($arrayCircuito);
+     return $arrayCircuito;
+}
