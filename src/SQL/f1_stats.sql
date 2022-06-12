@@ -32,11 +32,11 @@ DELIMITER ;
 -- ---------------------------------------------
 create table equipos(
 	id_equipo int primary key auto_increment,
-    imagen varchar(30),
+    imagen varchar(100),
     nombre varchar(30),
     pais varchar(30),
     director_deportivo varchar(30),
-    jefe_tecnico varchar(30),
+    jefe_tecnico varchar(100),
     chasis_actual varchar(30),
     motor varchar(30),
     debut int,
@@ -47,6 +47,7 @@ create table equipos(
 
 DELIMITER $$
 create procedure insert_equipos(
+	IN imagen varchar(30),
 	IN nombre varchar(30),
     IN pais varchar(30),
     IN director_deportivo varchar(30),
@@ -57,27 +58,28 @@ create procedure insert_equipos(
     IN campeonatos int
 )
 begin
-	insert into equipos(nombre,pais,director_deportivo,jefe_tecnico,chasis_actual,motor,debut,campeonatos)values(nombre,pais,director_deportivo,jefe_tecnico,chasis_actual,motor,debut,campeonatos);
+	insert into equipos(imagen,nombre,pais,director_deportivo,jefe_tecnico,chasis_actual,motor,debut,campeonatos)
+    values(imagen,nombre,pais,director_deportivo,jefe_tecnico,chasis_actual,motor,debut,campeonatos);
 end $$
 DELIMITER ;
 
-call insert_equipos("FERRARI","Maranello, Italia","Mattia Binotto","Enrico Cardile / Enrico Gualtieri","F1-75","Ferrari",1950,16);
-call insert_equipos("RED BULL","Milton Keynes, Reino Unido","Christian Horner","Pierre Waché","RB18","Red Bull Powertrains",1997,4);
-call insert_equipos("MERCEDES","Brackley, Reino Unido","Toto Wolff","Mike Elliott","W13","Mercedes",1970,8);
-call insert_equipos("MCLAREN","Woking, Reino Unido","Andreas Seidl","James Key","MCL36","Mercedes",1966,8);
-call insert_equipos("ALFA ROMEO","Hinwil, Suiza","Frédéric Vasseur","Jan Monchaux","C42","Ferrari",1993,0);
-call insert_equipos("HAAS","Kannapolis, Estados Unidos","Guenther Steiner","Simone Resta","VF-22","Ferrari",2016,0);
-call insert_equipos("ALPINE","Enstone, Reino Unido","Otmar Szafnauer","Pat Fry","A522","Renault",1986,2);
-call insert_equipos("ALPHATAURI","Faenza, Italia","Franz Tost","Jody Egginton","AT03","Red Bull Powertrains",1985,0);
-call insert_equipos("ASTON MARTIN","Silverstone, Reino Unido","Mike Krack","Andrew Green","AMR22","Mercedes",2018,0);
-call insert_equipos("WILLIAMS","Grove, Reino Unido","Jost Capito","François-Xavier Demaison","FW44","Mercedes",1978,9);
+call insert_equipos("https://i.imgur.com/TTNA5uM.png","FERRARI","Maranello, Italia","Mattia Binotto","Enrico Cardile / Enrico Gualtieri","F1-75","Ferrari",1950,16);
+call insert_equipos("https://i.imgur.com/QahYLIP.png","RED BULL","Milton Keynes, Reino Unido","Christian Horner","Pierre Waché","RB18","Red Bull Powertrains",1997,4);
+call insert_equipos("https://i.imgur.com/Gcsywii.png","MERCEDES","Brackley, Reino Unido","Toto Wolff","Mike Elliott","W13","Mercedes",1970,8);
+call insert_equipos("https://i.imgur.com/pYK3o0s.png","MCLAREN","Woking, Reino Unido","Andreas Seidl","James Key","MCL36","Mercedes",1966,8);
+call insert_equipos("https://i.imgur.com/pMg9nbk.png","ALFA ROMEO","Hinwil, Suiza","Frédéric Vasseur","Jan Monchaux","C42","Ferrari",1993,0);
+call insert_equipos("https://i.imgur.com/X0mCuIf.png","HAAS","Kannapolis, Estados Unidos","Guenther Steiner","Simone Resta","VF-22","Ferrari",2016,0);
+call insert_equipos("https://i.imgur.com/zDRrEjt.png","ALPINE","Enstone, Reino Unido","Otmar Szafnauer","Pat Fry","A522","Renault",1986,2);
+call insert_equipos("https://i.imgur.com/y3pDl9B.png","ALPHATAURI","Faenza, Italia","Franz Tost","Jody Egginton","AT03","Red Bull Powertrains",1985,0);
+call insert_equipos("https://i.imgur.com/aPmbdVB.png","ASTON MARTIN","Silverstone, Reino Unido","Mike Krack","Andrew Green","AMR22","Mercedes",2018,0);
+call insert_equipos("https://i.imgur.com/VzQm6Y1.png","WILLIAMS","Grove, Reino Unido","Jost Capito","François-Xavier Demaison","FW44","Mercedes",1978,9);
 select * from equipos order by campeonatos;
 
 -- ------------------------------------------------------------
 
 create table pilotos(
 	id_piloto int primary key auto_increment,
-    imagen varchar(30),
+    imagen varchar(100),
     nombre varchar(30),
     numero int,
     nacionalidad varchar(30),
@@ -94,9 +96,9 @@ create table pilotos(
     constraint ck_campeonatos_pilotos check (campeonatos >= 0),
     constraint fk_idEquipo foreign key (id_equipo) references equipos(id_equipo)
 )Engine = innodb;
-
 DELIMITER $$
 create procedure insert_pilotos(
+	IN imagen varchar(30),
 	IN nombre varchar(30),
     IN numero int,
     IN nacionalidad varchar(30),
@@ -111,30 +113,31 @@ create procedure insert_pilotos(
     IN vueltas_rapidas int,
     IN id_equipo int)
 begin
-	insert into pilotos(nombre,numero,nacionalidad,nacimiento,locacion_nacimiento,campeonatos,grandespremios,victorias,podios,puntos,poles,vueltas_rapidas,id_equipo)values(nombre,numero,nacionalidad,nacimiento,locacion_nacimiento,campeonatos,grandespremios,victorias,podios,puntos,poles,vueltas_rapidas,id_equipo);
+	insert into pilotos(imagen,nombre,numero,nacionalidad,nacimiento,locacion_nacimiento,campeonatos,grandespremios,victorias,podios,puntos,poles,vueltas_rapidas,id_equipo)
+    values(imagen,nombre,numero,nacionalidad,nacimiento,locacion_nacimiento,campeonatos,grandespremios,victorias,podios,puntos,poles,vueltas_rapidas,id_equipo);
 end $$
 DELIMITER ;
 
-call insert_pilotos("Lewis Hamilton",44,"Reino Unido","1985-01-07","Stevenage, Reino Unido",0,0,0,0,0,0,0,3);
-call insert_pilotos("George Russell",63,"Reino Unido","1998-02-15","King's Lynn, Reino Unido",0,0,0,0,0,0,0,3);
-call insert_pilotos("Fernando Alonso",14,"España","1981-07-29","Oviedo, España",0,0,0,0,0,0,0,7);
-call insert_pilotos("Esteban Ocon",31,"Francia","1996-09-17","Évreux, Normandía, Francia",0,0,0,0,0,0,0,7);
-call insert_pilotos("Mick Schumacher",47,"Alemania","1999-03-22","Vufflens-le-Château, Suiza",0,0,0,0,0,0,0,6);
-call insert_pilotos("Kevin Magnussen",20,"Dinamarca","1992-10-05","Roskilde, Dinamarca",0,0,0,0,0,0,0,6);
-call insert_pilotos("Lando Norris",4,"Reino Unido","1999-11-13","Bristol, Reino Unido",0,0,0,0,0,0,0,4);
-call insert_pilotos("Daniel Ricciardo",3,"Australia","1989-07-01","Perth, Australia",0,0,0,0,0,0,0,4);
-call insert_pilotos("Guanyu Zhou",24,"China","1999-05-30","Shanghai, China",0,0,0,0,0,0,0,5);
-call insert_pilotos("Valtteri Bottas",77,"Finlandia","1989-08-28","Nastola, Finlandia",0,0,0,0,0,0,0,5);
-call insert_pilotos("Sergio Pérez",11,"México","1990-01-26","Guadalajara, México",0,0,0,0,0,0,0,2);
-call insert_pilotos("Max Verstappen",1,"Holanda","1997-09-30","Hasselt, Bélgica",0,0,0,0,0,0,0,2);
-call insert_pilotos("Lance Stroll",18,"Canada","1998-10-29","Montreal, Canadá",0,0,0,0,0,0,0,9);
-call insert_pilotos("Sebastian Vettel",5,"Alemania","1987-04-03","Heppenheim, Alemania",0,0,0,0,0,0,0,9);
-call insert_pilotos("Carlos Sainz",55,"España","1994-09-01","Madrid, España",0,0,0,0,0,0,0,1);
-call insert_pilotos("Charles Leclerc",16,"Mónaco","1997-10-16","Montecarlo, Mónaco",0,0,0,0,0,0,0,1);
-call insert_pilotos("Yuki Tsunoda",22,"Japón","2000-05-11","Sagamihara, Japón",0,0,0,0,0,0,0,8);
-call insert_pilotos("Pierre Gasly",10,"Francia","1996-02-07","Rouen, Francia",0,0,0,0,0,0,0,8);
-call insert_pilotos("Nicholas Latifi",6,"Canadá","1995-06-29","Montreal, Canadá",0,0,0,0,0,0,0,10);
-call insert_pilotos("Alexander Albon",23,"Tailandia","1996-03-23","Londres, Inglaterra",0,0,0,0,0,0,0,10);
+call insert_pilotos("https://i.imgur.com/Wg4WwGg.png","Lewis Hamilton",44,"Reino Unido","1985-01-07","Stevenage, Reino Unido",0,0,0,0,0,0,0,3);
+call insert_pilotos("https://i.imgur.com/P9Odll3.png","George Russell",63,"Reino Unido","1998-02-15","King's Lynn, Reino Unido",0,0,0,0,0,0,0,3);
+call insert_pilotos("https://i.imgur.com/qX0Dmnb.png","Fernando Alonso",14,"España","1981-07-29","Oviedo, España",0,0,0,0,0,0,0,7);
+call insert_pilotos("https://i.imgur.com/qLF8Cks.png","Esteban Ocon",31,"Francia","1996-09-17","Évreux, Normandía, Francia",0,0,0,0,0,0,0,7);
+call insert_pilotos("https://i.imgur.com/yOAQHhD.png","Mick Schumacher",47,"Alemania","1999-03-22","Vufflens-le-Château, Suiza",0,0,0,0,0,0,0,6);
+call insert_pilotos("https://i.imgur.com/F5n6uoh.png","Kevin Magnussen",20,"Dinamarca","1992-10-05","Roskilde, Dinamarca",0,0,0,0,0,0,0,6);
+call insert_pilotos("https://i.imgur.com/b6yO6OU.png","Lando Norris",4,"Reino Unido","1999-11-13","Bristol, Reino Unido",0,0,0,0,0,0,0,4);
+call insert_pilotos("https://i.imgur.com/KBFF6C1.png","Daniel Ricciardo",3,"Australia","1989-07-01","Perth, Australia",0,0,0,0,0,0,0,4);
+call insert_pilotos("https://i.imgur.com/6xPtS8r.png","Guanyu Zhou",24,"China","1999-05-30","Shanghai, China",0,0,0,0,0,0,0,5);
+call insert_pilotos("https://i.imgur.com/ISG7Yci.png","Valtteri Bottas",77,"Finlandia","1989-08-28","Nastola, Finlandia",0,0,0,0,0,0,0,5);
+call insert_pilotos("https://i.imgur.com/ytUV6Vc.png","Sergio Pérez",11,"México","1990-01-26","Guadalajara, México",0,0,0,0,0,0,0,2);
+call insert_pilotos("https://i.imgur.com/pQPdwr0.png","Max Verstappen",1,"Holanda","1997-09-30","Hasselt, Bélgica",0,0,0,0,0,0,0,2);
+call insert_pilotos("https://i.imgur.com/CWcMCaQ.png","Lance Stroll",18,"Canada","1998-10-29","Montreal, Canadá",0,0,0,0,0,0,0,9);
+call insert_pilotos("https://i.imgur.com/NSItlMS.png","Sebastian Vettel",5,"Alemania","1987-04-03","Heppenheim, Alemania",0,0,0,0,0,0,0,9);
+call insert_pilotos("https://i.imgur.com/vXvbTLU.png","Carlos Sainz",55,"España","1994-09-01","Madrid, España",0,0,0,0,0,0,0,1);
+call insert_pilotos("https://i.imgur.com/3JRScEX.png","Charles Leclerc",16,"Mónaco","1997-10-16","Montecarlo, Mónaco",0,0,0,0,0,0,0,1);
+call insert_pilotos("https://i.imgur.com/MGWnY6P.png","Yuki Tsunoda",22,"Japón","2000-05-11","Sagamihara, Japón",0,0,0,0,0,0,0,8);
+call insert_pilotos("https://i.imgur.com/nnCIa8b.png","Pierre Gasly",10,"Francia","1996-02-07","Rouen, Francia",0,0,0,0,0,0,0,8);
+call insert_pilotos("https://i.imgur.com/T5U0cN3.png","Nicholas Latifi",6,"Canadá","1995-06-29","Montreal, Canadá",0,0,0,0,0,0,0,10);
+call insert_pilotos("https://i.imgur.com/2HoIDUy.png","Alexander Albon",23,"Tailandia","1996-03-23","Londres, Inglaterra",0,0,0,0,0,0,0,10);
 
 select pilotos.nombre, equipos.nombre from pilotos inner join equipos where pilotos.id_equipo = equipos.id_equipo;
 select* from pilotos;
@@ -153,34 +156,34 @@ create table circuitos(
 )Engine = innodb;
 
 DELIMITER $$
-create procedure insert_circuito(IN nombre varchar(30), IN pais varchar(30), IN longitud varchar(30),IN vueltas int,IN distancia_total varchar(30),IN record_vuelta varchar(30))
+create procedure insert_circuito(IN imagen varchar(30),IN nombre varchar(30), IN pais varchar(30), IN longitud varchar(30),IN vueltas int,IN distancia_total varchar(30),IN record_vuelta varchar(30))
 begin
-	insert into circuitos(nombre,pais,longitud,vueltas,distancia_total,record_vuelta) values(nombre,pais,longitud,vueltas,distancia_total,record_vuelta);
+	insert into circuitos(imagen,nombre,pais,longitud,vueltas,distancia_total,record_vuelta) values(imagen,nombre,pais,longitud,vueltas,distancia_total,record_vuelta);
 end $$
 DELIMITER ;
 
-call insert_circuito("Sakhir","Bahréin","5.412 km",57,"308.484 km","1:31.447");
-call insert_circuito("Jeddah","Arabia Saudí","6.174 km",50,"308.700 km","1:30.734");
-call insert_circuito("Melbourne","Australia","5.303 km",58,"307.574 km","1:24.125");
-call insert_circuito("Imola","Italia","4.909 km",63,"309.267 km","1:15.484");
-call insert_circuito("Miami","Estados Unidos","5.41 km",57,"308.370 km","1:31.361");
-call insert_circuito("Barcelona","España","4.675 km",66,"308.550 km","1:18:149");
-call insert_circuito("Montecarlo","Mónaco","3.337 km",78,"260.286 km","1.12:909");
-call insert_circuito("Bakú","Azerbaiyán","6.003 km",51,"306.153 km","1:43.009");
-call insert_circuito("Montreal","Canadá","4.361 km",70,"305.270 km","1:13.078");
-call insert_circuito("Silverstone","Reino Unido","5.891 km",52,"306.332 km","1:27.097");
-call insert_circuito("Spielberg","Austria","4.318 km",71,"306.578 km","1:05.619");
-call insert_circuito("Le Castellet","Francia","5.842 km",53,"309.626 km","1:32.740");
-call insert_circuito("Budapest","Hungría","4.381 km",70,"306.670 km","1:16.627");
-call insert_circuito("Spa","Bélgica","7.004 km",44 ,"308.176 km","1:46.286");
-call insert_circuito("Zandvoort","Países Bajos","4.259 km",72,"306.648 km","1:11.097");
-call insert_circuito("Monza","Italia","5.793 km",53,"307.029 km","1:21.046");
-call insert_circuito("Singapur","Singapur","5.063 km",61,"308.843 km","1:41.905");
-call insert_circuito("Suzuka","Japón","5.807 km",53,"307.771 km","1:30.983");
-call insert_circuito("Austin","Estados Unidos","5.513 km",56,"308.728 km","1:36.169");
-call insert_circuito("Hermanos Rodríguez","México","4.304 km",71,"305.584 km","1:17.774");
-call insert_circuito("São Paulo","Brasil","4.309 km",71,"305.939 km","1:10.540");
-call insert_circuito("Abu Dabi","Emiratos Árabes","5.281 km",58,"306.298 km","1:26.103");
+call insert_circuito("https://i.imgur.com/uH3y19W.png","Sakhir","Bahréin","5.412 km",57,"308.484 km","1:31.447");
+call insert_circuito("https://i.imgur.com/c59OnfE.png","Jeddah","Arabia Saudí","6.174 km",50,"308.700 km","1:30.734");
+call insert_circuito("https://i.imgur.com/dgmaTX1.png","Melbourne","Australia","5.303 km",58,"307.574 km","1:24.125");
+call insert_circuito("https://i.imgur.com/aAAvTrj.png","Imola","Italia","4.909 km",63,"309.267 km","1:15.484");
+call insert_circuito("https://i.imgur.com/IBPjEYA.png","Miami","Estados Unidos","5.41 km",57,"308.370 km","1:31.361");
+call insert_circuito("https://i.imgur.com/M24gRah.png","Barcelona","España","4.675 km",66,"308.550 km","1:18:149");
+call insert_circuito("https://i.imgur.com/64GwK4V.png","Montecarlo","Mónaco","3.337 km",78,"260.286 km","1.12:909");
+call insert_circuito("https://i.imgur.com/ZlxxIL9.png","Bakú","Azerbaiyán","6.003 km",51,"306.153 km","1:43.009");
+call insert_circuito("https://i.imgur.com/5LM1LTB.png","Montreal","Canadá","4.361 km",70,"305.270 km","1:13.078");
+call insert_circuito("https://i.imgur.com/DVf5Q0G.png","Silverstone","Reino Unido","5.891 km",52,"306.332 km","1:27.097");
+call insert_circuito("https://i.imgur.com/vIFzljO.png","Spielberg","Austria","4.318 km",71,"306.578 km","1:05.619");
+call insert_circuito("https://i.imgur.com/E9iez2x.png","Le Castellet","Francia","5.842 km",53,"309.626 km","1:32.740");
+call insert_circuito("https://i.imgur.com/kNk8ihA.png","Budapest","Hungría","4.381 km",70,"306.670 km","1:16.627");
+call insert_circuito("https://i.imgur.com/9JVJomH.png","Spa Francorchamps","Bélgica","7.004 km",44 ,"308.176 km","1:46.286");
+call insert_circuito("https://i.imgur.com/AkYGRKx.png","Zandvoort","Países Bajos","4.259 km",72,"306.648 km","1:11.097");
+call insert_circuito("https://i.imgur.com/hn62omV.png","Monza","Italia","5.793 km",53,"307.029 km","1:21.046");
+call insert_circuito("https://i.imgur.com/HnvImWI.png","Singapur","Singapur","5.063 km",61,"308.843 km","1:41.905");
+call insert_circuito("https://i.imgur.com/0pX5ymz.png","Suzuka","Japón","5.807 km",53,"307.771 km","1:30.983");
+call insert_circuito("https://i.imgur.com/tymvfpZ.png","Austin","Estados Unidos","5.513 km",56,"308.728 km","1:36.169");
+call insert_circuito("https://i.imgur.com/q1Rz4tG.png","Hermanos Rodríguez","México","4.304 km",71,"305.584 km","1:17.774");
+call insert_circuito("https://i.imgur.com/arefJiZ.png","São Paulo","Brasil","4.309 km",71,"305.939 km","1:10.540");
+call insert_circuito("https://i.imgur.com/FjVejw6.png","Abu Dabi","Emiratos Árabes","5.281 km",58,"306.298 km","1:26.103");
 
 select * from circuitos;
 
@@ -228,31 +231,11 @@ create table posiciones(
     constraint fk_p17 foreign key (p17) references pilotos(id_piloto) on delete cascade on update cascade,
     constraint fk_p18 foreign key (p18) references pilotos(id_piloto) on delete cascade on update cascade,
     constraint fk_p19 foreign key (p19) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint fk_p20 foreign key (p20) references pilotos(id_piloto) on delete cascade on update cascade,
-    constraint ck_p1_posiciones check (p1 > 0),
-    constraint ck_p2_posiciones check (p2 > 0),
-    constraint ck_p3_posiciones check (p3 > 0),
-    constraint ck_p4_posiciones check (p4 > 0),
-    constraint ck_p5_posiciones check (p5 > 0),
-    constraint ck_p6_posiciones check (p6 > 0),
-    constraint ck_p7_posiciones check (p7 > 0),
-    constraint ck_p8_posiciones check (p8 > 0),
-    constraint ck_p9_posiciones check (p9 > 0),
-    constraint ck_p10_posiciones check (p10 > 0),
-    constraint ck_p11_posiciones check (p11 > 0),
-    constraint ck_p12_posiciones check (p12 > 0),
-    constraint ck_p13_posiciones check (p13 > 0),
-    constraint ck_p14_posiciones check (p14 > 0),
-    constraint ck_p15_posiciones check (p15 > 0),
-    constraint ck_p16_posiciones check (p16 > 0),
-    constraint ck_p17_posiciones check (p17 > 0),
-    constraint ck_p18_posiciones check (p18 > 0),
-    constraint ck_p19_posiciones check (p19 > 0),
-    constraint ck_p20_posiciones check (p20 > 0)
+    constraint fk_p20 foreign key (p20) references pilotos(id_piloto) on delete cascade on update cascade
 )Engine = innodb;
 
 DELIMITER $$
-create procedure insert_posiciones(IN id_carrera int,IN id_circuito int, IN p1 int, IN p2 int, IN p3 int, IN p4 int, IN p5 int, IN p6 int, IN p7 int, IN p8 int, IN p9 int, IN p10 int,
+create procedure insert_posiciones(IN id_circuito int, IN p1 int, IN p2 int, IN p3 int, IN p4 int, IN p5 int, IN p6 int, IN p7 int, IN p8 int, IN p9 int, IN p10 int,
     IN p11 int, IN p12 int, IN p13 int, IN p14 int, IN p15 int, IN p16 int, IN p17 int, IN p18 int, IN p19 int, IN p20 int,IN vuelta_rapida varchar(30))
 begin
 	call insert_carrera(id_circuito,round(1 + rand()*(19)));
@@ -268,7 +251,7 @@ create trigger tg_insert_posiciones
 after insert on posiciones for each row
 begin
 	declare vuelta_rapida int;
-    
+    call insert_carrera(id_circuito,round(1 + rand()*(19)));
     select piloto_vuelta_rapida from carreras where id_carrera = new.id_carreras into vuelta_rapida;
     update pilotos set vueltas_rapidas = vueltas_rapidas + 1  where id_piloto = vuelta_rapida;
 	update pilotos set grandespremios = grandespremios + 1, victorias = victorias + 1, podios = podios + 1 ,puntos = puntos + 25 where id_piloto = new.p1;
@@ -344,12 +327,107 @@ begin
 	update equipos set puntos = puntos + 1 where id_equipo = (select id_equipo from pilotos where id_piloto = new.p10);
 end $$
 DELIMITER ;
-
 -- ----------------------------------------------------
-call insert_posiciones(1,1,9,1,8,2,7,3,6,4,5,10,11,12,13,14,15,16,17,18,19,20,"1:25.234");
+-- ----------------------------------------------------
+-- call insert_posiciones(1,9,1,8,2,7,3,6,4,5,10,11,12,13,14,15,16,17,18,19,20,"1:25.234");
+-- call insert_posiciones(2,10,20,9,19,8,18,7,17,16,6,15,5,13,14,4,3,12,2,11,1,"1:15.534");
 
-select pilotos.numero,pilotos.nombre,pilotos.nacionalidad from posiciones inner join pilotos;
+
+select * from posiciones;
+
+
+drop view if exists resultados_carrera ;
+create view resultados_carrera as select pilotos.numero,pilotos.nombre,pilotos.nacionalidad,25 as 'puntos' from posiciones inner join pilotos where id_posiciones = 1 and p1 = id_piloto
+	union all
+	select pilotos.numero,pilotos.nombre,pilotos.nacionalidad,18 as 'puntos' from posiciones inner join pilotos where id_posiciones = 1 and p2 = id_piloto
+	union all
+	select pilotos.numero,pilotos.nombre,pilotos.nacionalidad,15 as 'puntos' from posiciones inner join pilotos where id_posiciones = 1 and p3 = id_piloto
+	union all
+	select pilotos.numero,pilotos.nombre,pilotos.nacionalidad,12 as 'puntos' from posiciones inner join pilotos where id_posiciones = 1 and p4 = id_piloto
+	union all
+	select pilotos.numero,pilotos.nombre,pilotos.nacionalidad,10 as 'puntos' from posiciones inner join pilotos where id_posiciones = 1 and p5 = id_piloto
+	union all
+	select pilotos.numero,pilotos.nombre,pilotos.nacionalidad,8 as 'puntos' from posiciones inner join pilotos where id_posiciones = 1 and p6 = id_piloto
+	union all
+	select pilotos.numero,pilotos.nombre,pilotos.nacionalidad,6 as 'puntos' from posiciones inner join pilotos where id_posiciones = 1 and p7 = id_piloto
+	union all
+	select pilotos.numero,pilotos.nombre,pilotos.nacionalidad,4 as 'puntos' from posiciones inner join pilotos where id_posiciones = 1 and p8 = id_piloto
+	union all
+	select pilotos.numero,pilotos.nombre,pilotos.nacionalidad,2 as 'puntos' from posiciones inner join pilotos where id_posiciones = 1 and p9 = id_piloto
+	union all
+	select pilotos.numero,pilotos.nombre,pilotos.nacionalidad,1 as 'puntos' from posiciones inner join pilotos where id_posiciones = 1 and p10 = id_piloto and id_carreras = 2;
+    
+-- --------------------------------------------------------------------------------------------------------
+
+select circuitos.nombre as 'circuito',pilotos.nombre,equipos.nombre as 'equipo',case
+when pilotos.id_piloto = posiciones.p1 then 25 
+when pilotos.id_piloto = posiciones.p2 then 18 
+when pilotos.id_piloto = posiciones.p3 then 15 
+when pilotos.id_piloto = posiciones.p4 then 12 
+when pilotos.id_piloto = posiciones.p5 then 10 
+when pilotos.id_piloto = posiciones.p6 then 8 
+when pilotos.id_piloto = posiciones.p7 then 6 
+when pilotos.id_piloto = posiciones.p8 then 4 
+when pilotos.id_piloto = posiciones.p9 then 2 
+when pilotos.id_piloto = posiciones.p10 then 1 
+else 0 
+end as 'puntos'
+from posiciones 
+inner join carreras on carreras.id_carrera = posiciones.id_carreras
+inner join circuitos on circuitos.id_circuito = carreras.id_circuito
+inner join pilotos on pilotos.id_piloto = 8
+inner join equipos on pilotos.id_equipo = equipos.id_equipo;
+    
+-- --------------------------------------------------------------------------
+
+select circuitos.nombre as 'circuito',pilotos.nombre,equipos.nombre as 'equipo',case
+when pilotos.id_piloto = posiciones.p1 then 25 
+when pilotos.id_piloto = posiciones.p2 then 18 
+when pilotos.id_piloto = posiciones.p3 then 15 
+when pilotos.id_piloto = posiciones.p4 then 12 
+when pilotos.id_piloto = posiciones.p5 then 10 
+when pilotos.id_piloto = posiciones.p6 then 8 
+when pilotos.id_piloto = posiciones.p7 then 6 
+when pilotos.id_piloto = posiciones.p8 then 4 
+when pilotos.id_piloto = posiciones.p9 then 2 
+when pilotos.id_piloto = posiciones.p10 then 1 
+else 0 
+end as 'puntos'
+from posiciones 
+inner join carreras on carreras.id_carrera = posiciones.id_carreras
+inner join circuitos on circuitos.id_circuito = carreras.id_circuito
+inner join pilotos on pilotos.nombre = 'Guanyu Zhou'
+inner join equipos on pilotos.id_equipo = equipos.id_equipo;
+
+
+-- ------------------------------------------------------------------
+
+select circuitos.nombre as 'circuito',equipos.nombre,equipos.chasis_actual as 'equipo',case
+when pilotos.id_piloto = posiciones.p1 then 25 
+when pilotos.id_piloto = posiciones.p2 then 18 
+when pilotos.id_piloto = posiciones.p3 then 15 
+when pilotos.id_piloto = posiciones.p4 then 12 
+when pilotos.id_piloto = posiciones.p5 then 10 
+when pilotos.id_piloto = posiciones.p6 then 8 
+when pilotos.id_piloto = posiciones.p7 then 6 
+when pilotos.id_piloto = posiciones.p8 then 4 
+when pilotos.id_piloto = posiciones.p9 then 2 
+when pilotos.id_piloto = posiciones.p10 then 1 
+else 0 
+end as 'puntos'
+from posiciones 
+inner join carreras on carreras.id_carrera = posiciones.id_carreras
+inner join circuitos on circuitos.id_circuito = carreras.id_circuito
+inner join pilotos on pilotos.id_equipo = 7
+inner join equipos on pilotos.id_equipo = equipos.id_equipo group by circuitos.nombre;
+
+
+-- ----------------------------------------------------------------------
+    
+SELECT * FROM pilotos WHERE nombre = "Guanyu Zhou";
+
+select * from resultados_carrera;
 
 select * from equipos order by puntos desc;
 
-select * from pilotos order by puntos desc;
+select * from pilotos order by puntos desc
