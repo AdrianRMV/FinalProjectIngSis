@@ -6,7 +6,7 @@
           <a href="https://www.facebook.com/Formula1" target="_blank" title="Facebook F1">
                <i class="fa-brands fa-facebook-square"></i>
           </a>
-          <a href="https://twitter.com/F1?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" title="Twitter F1">
+          <a href="https://twitter.com/F1" target="_blank" title="Twitter F1">
                <i class="fa-brands fa-twitter-square"></i>
           </a>
      </div>
