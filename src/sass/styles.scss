@@ -138,8 +138,11 @@ header {
 // Pilotos Section
 .pilotos_circuitos_view {
     height: 622px;
-    border-top: 1px solid #000;
-    background-color: $secondary-color;
+    background: url('http://localhost/src/images/f1_wallpaper.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 
     // Busqueda sea igual a circuito:
     .info-circuito {
@@ -150,13 +153,26 @@ header {
         align-items: center;
         width: max-content;
         margin: 0 auto;
-        padding: 20px 190px;
-        background: blue;
+        position: relative;
+        z-index: 1;
+        width: 850px;
         .info-circuito-img {
-            width: 366px;
+            width: 73%;
+            padding: 35px 100px;
+            position: relative;
         }
         .info-circuito-text {
             padding-top: 20px;
+            position: relative;
+        }
+
+        &::before {
+            content: '';
+            inset: 0;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
         }
     }
 }

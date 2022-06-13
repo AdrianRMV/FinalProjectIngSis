@@ -1,6 +1,7 @@
 <section class="carreras_view container">
+
     <!-- Tabla Circuito definido por usuario -->
-    <div class="table-responsive">
+    <div class="table-responsive carreras-table">
         <table class="table table-hover table-warning table-hover">
             <thead>
                 <tr>
@@ -10,10 +11,12 @@
                     <td scope="col">Puntos</td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="tbody-carreras">
                 
             </tbody>
         </table>
     </div>
+
     <!-- Tabla busqueda ALL en circuito -->
+    
 </section>

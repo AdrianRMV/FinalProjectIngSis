@@ -18,6 +18,9 @@ const vueltas_primera_vista = document.querySelector('.vueltas-circuito');
 const distancia_primera_vista = document.querySelector('.distancia-circuito');
 const record_primera_vista = document.querySelector('.record-circuito');
 
+// Campos para la tabla CIRCUITOS
+const TableCarreras = document.querySelector('.tbody-carreras');
+
 
 btn_search.addEventListener('click', (event) => {
     event.preventDefault();
@@ -58,18 +61,41 @@ btn_search.addEventListener('click', (event) => {
                 vueltas_primera_vista.innerHTML = "";
                 distancia_primera_vista.innerHTML = "";
                 record_primera_vista.innerHTML = "";
+                TableCarreras.innerHTML = "";
 
                 // Agregando info a la primera vista
                 imagen_primera_vista.src = response.data.info[0].imagen;
+                nombre_primera_vista.innerHTML = "Nombre: " + response.data.info[0].nombre;
+                pais_primera_vista.innerHTML = "Pais: " + response.data.info[0].pais;
+                longuitud_primera_vista.innerHTML = "Longuitud: " + response.data.info[0].longitud;
+                vueltas_primera_vista.innerHTML = "Num. Vueltas: " + response.data.info[0].vueltas;
+                distancia_primera_vista.innerHTML = "Distancia Total: " + response.data.info[0].distancia_total;
+                record_primera_vista.innerHTML = "Record primera vuelta: " + response.data.info[0].record_vuelta;
 
+                // Agregando info a la tabla
                 const tamanio = response.data.response.length;
+                for (let i = 0; i < tamanio; i++) {
+                    const tr = document.createElement('tr');
+                    const td_numero = document.createElement('td');
+                    const td_nombre = document.createElement('td');
+                    const td_nacionalidad = document.createElement('td');
+                    const td_puntos = document.createElement('td');
 
-                nombre_primera_vista.innerHTML = response.data.info[0].nombre + " ,";
-                pais_primera_vista.innerHTML = response.data.info[0].pais;
-                longuitud_primera_vista.innerHTML = response.data.info[0].longitud;
-                vueltas_primera_vista.innerHTML = response.data.info[0].vueltas;
-                distancia_primera_vista.innerHTML = response.data.info[0].distancia_total;
-                record_primera_vista.innerHTML = response.data.info[0].record_vuelta;
+                    td_numero.innerHTML = response.data.response[i].numero;
+                    td_nombre.innerHTML = response.data.response[i].nombre;
+                    td_nacionalidad.innerHTML = response.data.response[i].nacionalidad;
+                    td_puntos.innerHTML = response.data.response[i].puntos;
+
+                    tr.appendChild(td_numero);
+                    tr.appendChild(td_nombre);
+                    tr.appendChild(td_nacionalidad);
+                    tr.appendChild(td_puntos);
+
+                    TableCarreras.appendChild(tr);
+                }
+
+
+
 
                 console.log(response.data);
             })
