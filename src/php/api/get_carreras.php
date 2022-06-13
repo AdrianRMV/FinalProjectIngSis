@@ -2,17 +2,14 @@
 
 require __DIR__ . "/apiTable.php";
 
-$id_carrera = 0;
+$id_carrera = null;
 
 if (isset($_POST['id_carrera'])) {
-     $id_carrera = $_POST['id_carrera'];
+     $id_carrera_POST = intval($_POST['id_carrera']);
+     $id_carrera = $id_carrera_POST;
 
      $test = new ApiRest();
-     $arrayCircuito = $test->get_table_Carreras(1);
+     $arrayCircuito = $test->get_table_Carreras($id_carrera);
      echo json_encode($arrayCircuito);
      return $arrayCircuito;
 }
-
-$test = new ApiRest();
-$arrayCircuito = $test->get_table_Carreras(1);
-echo json_encode($arrayCircuito);

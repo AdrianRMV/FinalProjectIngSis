@@ -137,13 +137,14 @@ header {
 
 // Pilotos Section
 .pilotos_circuitos_view {
-    // height: 350px;
+    height: 622px;
     border-top: 1px solid #000;
     background-color: $secondary-color;
 
     // Busqueda sea igual a circuito:
     .info-circuito {
         display: flex;
+        height: 622px;
         flex-direction: column;
         justify-content: center;
         align-items: center;

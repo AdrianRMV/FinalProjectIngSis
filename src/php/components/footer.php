@@ -15,7 +15,7 @@
                     <strong>Proyecto Final</strong>
                 </p>
             </div>
-            <div class="col-md-6 team-info">
+            <div class="col-md-9 team-info">
                 <a href="https://www.facebook.com/blackwizart123/" target="_blank" title="Facebook Adrian Ramirez" class="team">
                     <div class="img-team-container">
                         <img src="http://localhost/src/images/adrian.jpg" alt="team mate image" class="img-fluid">
@@ -35,7 +35,7 @@
                     <strong>Javier Murillo <br> Cota</strong>
                 </a>
             </div>
-            <div class="col-md-3 login-info">
+            <!-- <div class="col-md-3 login-info">
                 <label for="correo">Username: </label>
                 <input type="email" name="correo" required="required" placeholder="adrian@gmail.com">
                 <br>
@@ -43,6 +43,6 @@
                 <input type="password" name="password" required="required" placeholder="********">
                 <br>
                 <button class="btn-login">Login</button>
-            </div>
+            </div> -->
         </div>
 </footer>

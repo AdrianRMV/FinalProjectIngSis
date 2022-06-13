@@ -16,7 +16,7 @@
 <?php require_once './src/php/components/pilotos_circuitos.php'; ?>
 
 <!-- Carreras section -->
-<?php require_once './src/php/components/carreras.php'; ?>
+<?php require_once './src/php/components/tablas_resultados.php'; ?>
 
 <!-- Footer section -->
 <?php require_once './src/php/components/footer.php'; ?>
