@@ -136,7 +136,7 @@ class ApiRest
                     'Ganador'           => $fila['Ganador'],
                     'Equipo'            => $fila['Equipo'],
                     'vueltas'           => $fila['vueltas'],
-                    'Vuelta Rapida'     => $fila['Vuelta Rapida'],
+                    'Vuelta Rapida'     => $fila['vuelta_rapida'],
                );
                array_push($carreras, $items);
           }
