@@ -108,7 +108,7 @@ class Querys extends DB
      }
      function get_carreras()
      {
-          $res = $this->connect()->query("SELECT circuitos.nombre,pilotos.nombre as 'Ganador', equipos.nombre as 'Equipo', circuitos.vueltas,posiciones.vuelta_rapida as 'Vuelta Rapida' from carreras inner join circuitos on circuitos.id_circuito = carreras.id_circuito inner join posiciones on posiciones.id_carreras = carreras.id_carrera inner join pilotos on pilotos.id_piloto = posiciones.p1 inner join equipos on equipos.id_equipo = pilotos.id_equipo order by carreras.id_carrera;");
+          $res = $this->connect()->query("SELECT circuitos.nombre,pilotos.nombre as 'Ganador', equipos.nombre as 'Equipo', circuitos.vueltas,posiciones.vuelta_rapida from carreras inner join circuitos on circuitos.id_circuito = carreras.id_circuito inner join posiciones on posiciones.id_carreras = carreras.id_carrera inner join pilotos on pilotos.id_piloto = posiciones.p1 inner join equipos on equipos.id_equipo = pilotos.id_equipo order by carreras.id_carrera;");
           return $res;
      }
 }
