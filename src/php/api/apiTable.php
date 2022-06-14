@@ -133,8 +133,8 @@ class ApiRest
           while ($fila = $res->fetch_assoc()) {
                $items = array(
                     'nombre'            => $fila['nombre'],
-                    'ganador'           => $fila['ganador'],
-                    'equipo'            => $fila['equipo'],
+                    'ganador'           => $fila['Ganador'],
+                    'equipo'            => $fila['Equipo'],
                     'vueltas'           => $fila['vueltas'],
                     'vuelta_rapida'     => $fila['vuelta_rapida'],
                );
