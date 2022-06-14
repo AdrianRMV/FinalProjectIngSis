@@ -2,9 +2,14 @@
 
 require __DIR__ . "/apiTable.php";
 
+$id_equipo = null;
 
-
-$test = new ApiRest();
-$arrayEquipos = $test->get_table_equipos(1);
-echo json_encode($arrayEquipos);
-return $arrayEquipos;
+if (isset($_POST['id_equipo'])) {
+     $id_equipo_POST = intval($_POST['id_equipo']);
+     $id_equipo = $id_equipo_POST;
+     
+     $test = new ApiRest();
+     $arrayPilotos = $test->get_table_equipos($id_equipo);
+     echo json_encode($arrayPilotos);
+     return $arrayPilotos;
+}

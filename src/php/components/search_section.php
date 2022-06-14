@@ -55,7 +55,7 @@
 
      <!-- Input para seleccionar la carrera que se quiere buscar -->
      <select class="form-select form_carrera" id="carreras-select" size="3" aria-label="size 3 select example" onchange="updateCarrera()">
-          <option selected>ALL</option>
+          <option value="0" selected>ALL</option>
           <?php
           foreach ($arrayCircuitos as $row) {
                echo "<option value='" . $row['id'] . "'>" . $row['pais'] . "</option>";
@@ -77,7 +77,7 @@
 
      <!-- Input para seleccionar el piloto que se quiere buscar -->
      <select class="form-select form_piloto hidden" id="pilotos-select" size="3" aria-label="size 3 select example" onchange="updatePiloto()">
-          <option selected>ALL</option>
+          <option value="0" selected>ALL</option>
           <?php
           foreach ($arrayPilotos as $row) {
                echo "<option value='" . $row['id'] . "'>" . $row['nombre'] . "</option>";
@@ -99,7 +99,7 @@
 
      <!-- Input para seleccionar el piloto que se quiere buscar -->
      <select class="form-select form_equipo hidden" id="equipos-select" size="3" aria-label="size 3 select example" onchange="updateEquipo()">
-          <option selected>ALL</option>
+          <option value="0" selected>ALL</option>
           <?php
           foreach ($arrayEquipos as $row) {
                echo "<option value='" . $row['id'] . "'>" . $row['nombre'] . "</option>";
