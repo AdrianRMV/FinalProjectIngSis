@@ -61,6 +61,7 @@ class ApiRest
                     'nacimiento'         => $fila['nacimiento'],
                     'locacion_nacimiento' => $fila['locacion_nacimiento'],
                     'victorias'          => $fila['victorias'],
+                    'imagen'             => $fila['imagen']
                );
                array_push($pilotos["info"], $items);
           }
@@ -99,6 +100,7 @@ class ApiRest
                     'debut'                  => $fila['debut'],
                     'campeonatos'            => $fila['campeonatos'],
                     'puntos'                 => $fila['puntos'],
+                    'imagen'                 => $fila['imagen']
                );
                // insertamos el array en el array principal
                array_push($equipos["info"], $items);
@@ -116,6 +118,66 @@ class ApiRest
                );
                // insertamos el array en el array principal
                array_push($equipos["response"], $items);
+          }
+          return $equipos;
+     }
+     // funcion para obtener la tabla de todas las carreras
+     function get_all_carreras()
+     {
+          // inicializamos query
+          $query = new Querys();
+          // declaramos un nuevo array que usaremos para devolver la informacion
+          $carreras = array();
+
+          $res = $query->get_carreras();
+          while ($fila = $res->fetch_assoc()) {
+               $items = array(
+                    'nombre'            => $fila['nombre'],
+                    'Ganador'           => $fila['Ganador'],
+                    'Equipo'            => $fila['Equipo'],
+                    'vueltas'           => $fila['vueltas'],
+                    'Vuelta Rapida'     => $fila['Vuelta Rapida'],
+               );
+               array_push($carreras, $items);
+          }
+          return $carreras;
+     }
+     function get_all_pilotos()
+     {
+          // inicializamos query
+          $query = new Querys();
+          // declaramos un nuevo array que usaremos para devolver la informacion
+          $pilotos = array();
+
+          $res = $query->get_pilotos();
+          while ($fila = $res->fetch_assoc()) {
+               $items = array(
+                    'numero'            => $fila['numero'],
+                    'nombre'            => $fila['nombre'],
+                    'nacionalidad'      => $fila['nacionalidad'],
+                    'puntos'            => $fila['puntos'],
+               );
+               array_push($pilotos, $items);
+          }
+          return $pilotos;
+     }
+     function get_all_equipos()
+     {
+          // inicializamos query
+          $query = new Querys();
+          // declaramos un nuevo array que usaremos para devolver la informacion
+          $equipos = array();
+
+          $res = $query->get_equipos();
+          while ($fila = $res->fetch_assoc()) {
+               $items = array(
+                    'nombre'                 => $fila['nombre'],
+                    'director_deportivo'     => $fila['director_deportivo'],
+                    'chasis_actual'          => $fila['chasis_actual'],
+                    'motor'                  => $fila['motor'],
+                    'puntos'                 => $fila['puntos'],
+               );
+               array_push($equipos, $items);
           }
           return $equipos;
      }
