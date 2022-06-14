@@ -10,12 +10,12 @@ class Querys extends DB
 {
      function get_equipos()
      {
-          $res =  $this->connect()->query("SELECT * FROM equipos");
+          $res =  $this->connect()->query("SELECT * FROM equipos order by puntos desc");
           return $res;
      }
      function get_pilotos()
      {
-          $res = $this->connect()->query("SELECT * FROM pilotos");
+          $res = $this->connect()->query("SELECT * FROM pilotos order by puntos desc");
           return $res;
      }
      function get_circuitos()
@@ -84,16 +84,6 @@ class Querys extends DB
           INNER JOIN equipos ON pilotos.id_equipo = equipos.id_equipo");
           return $res;
      }
-     function get_equipos_camp()
-     {
-          $res = $this->connect()->query("SELECT * FROM equipos order by puntos desc");
-          return $res;
-     }
-     function get_pilotos_camp()
-     {
-          $res = $this->connect()->query("SELECT * FROM pilotos order by puntos desc");
-          return $res;
-     }
      function get_equipo_search($id_equipo)
      {
           $res = $this->connect()->query("SELECT circuitos.nombre as 'circuito',equipos.nombre,equipos.chasis_actual as 'equipo',case
@@ -114,6 +104,11 @@ class Querys extends DB
           inner join circuitos on circuitos.id_circuito = carreras.id_circuito
           inner join pilotos on pilotos.id_equipo = {$id_equipo}
           inner join equipos on pilotos.id_equipo = equipos.id_equipo group by circuitos.nombre;");
+          return $res;
+     }
+     function get_carreras()
+     {
+          $res = $this->connect()->query("SELECT circuitos.nombre,pilotos.nombre as 'Ganador', equipos.nombre as 'Equipo', circuitos.vueltas,posiciones.vuelta_rapida as 'Vuelta Rapida' from carreras inner join circuitos on circuitos.id_circuito = carreras.id_circuito inner join posiciones on posiciones.id_carreras = carreras.id_carrera inner join pilotos on pilotos.id_piloto = posiciones.p1 inner join equipos on equipos.id_equipo = pilotos.id_equipo order by carreras.id_carrera;");
           return $res;
      }
 }
