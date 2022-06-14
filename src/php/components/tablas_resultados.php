@@ -14,4 +14,17 @@
 
     <!-- Tabla busqueda ALL en circuito -->
 
+
+    <!-- Tabla Pilotos definido por usuario -->
+    <div class="table-responsive pilotos-table">
+        <table class="table table-hover table-striped table-dark table-hover">
+            <thead class="thead-pilotos">
+                
+            </thead>
+            <tbody class="tbody-pilotos">
+                
+            </tbody>
+        </table>
+    </div>
+
 </section>

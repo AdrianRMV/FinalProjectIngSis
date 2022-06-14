@@ -27,14 +27,16 @@ btn_search.addEventListener('click', (event) => {
     if (optionInput.value == 'Pilotos') {
         data.append('id_piloto', pilotoInput.value);
         axios({
-            method: 'GET',
+            method: 'POST',
             url: './src/php/api/get_pilotos.php',
             data,
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
         })
-            .then((response) => {})
+            .then((response) => {
+                console.log(response.data);
+            })
             .catch((error) => {
                 console.log(error);
             });
@@ -53,6 +55,7 @@ btn_search.addEventListener('click', (event) => {
             },
         })
             .then((response) => {
+                console.log(response.data);
                 imagen_primera_vista.src = '';
                 nombre_primera_vista.innerHTML = '';
                 pais_primera_vista.innerHTML = '';
@@ -84,11 +87,11 @@ btn_search.addEventListener('click', (event) => {
 
                 const tr_carreras = document.createElement('tr');
                 tr_carreras.innerHTML = `
-                <th scope="col">Numero</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Nacionalidad</th>
-                <th scope="col">Puntos</th>
-                `;
+                    <th scope="col">Numero</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Nacionalidad</th>
+                    <th scope="col">Puntos</th>
+                    `;
                 thead_carreras.appendChild(tr_carreras);
 
                 for (let i = 0; i < tamanio; i++) {
