@@ -147,7 +147,7 @@ btn_search.addEventListener('click', (event) => {
 
                axios({
                          method: 'POST',
-                         url: 'src/php/api/get_all_pilotos.php',
+                         url: '../src/php/api/get_all_pilotos.php',
                          data,
                          headers: {
                               'Content-Type': 'multipart/form-data',
@@ -200,7 +200,7 @@ btn_search.addEventListener('click', (event) => {
                data.append('id_piloto', pilotoInput.value);
                axios({
                          method: 'POST',
-                         url: 'src/php/api/get_pilotos.php',
+                         url: '../src/php/api/get_pilotos.php',
                          data,
                          headers: {
                               'Content-Type': 'multipart/form-data',
@@ -283,7 +283,7 @@ btn_search.addEventListener('click', (event) => {
 
                axios({
                          method: 'POST',
-                         url: 'src/php/api/get_all_carreras.php',
+                         url: '../src/php/api/get_all_carreras.php',
                          data,
                          headers: {
                               'Content-Type': 'multipart/form-data',
@@ -339,7 +339,7 @@ btn_search.addEventListener('click', (event) => {
                console.log(carreraInput.value);
                axios({
                          method: 'POST',
-                         url: 'src/php/api/get_carreras.php',
+                         url: '../src/php/api/get_carreras.php',
                          data,
                          headers: {
                               'Content-Type': 'multipart/form-data',
@@ -431,7 +431,7 @@ btn_search.addEventListener('click', (event) => {
 
                axios({
                          method: 'POST',
-                         url: 'src/php/api/get_all_equipos.php',
+                         url: '../src/php/api/get_all_equipos.php',
                          data,
                          headers: {
                               'Content-Type': 'multipart/form-data',
@@ -486,7 +486,7 @@ btn_search.addEventListener('click', (event) => {
                data.append('id_equipo', equipoInput.value);
                axios({
                          method: 'POST',
-                         url: 'src/php/api/get_equipos.php',
+                         url: '../src/php/api/get_equipos.php',
                          data,
                          headers: {
                               'Content-Type': 'multipart/form-data',
