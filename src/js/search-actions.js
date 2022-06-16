@@ -224,16 +224,16 @@ btn_search.addEventListener('click', (event) => {
                          // Agregando info a la primera vista
                          imagen_primera_vista.src = response.data.info[0].imagen;
                          nombre_piloto.innerHTML =
-                              'Nombre: ' + response.data.info[0].nombre;
+                              '<strong>Nombre:</strong> ' + response.data.info[0].nombre;
                          nacionalidad_piloto.innerHTML =
-                              'Nacionalidad: ' +
+                              '<strong>Nacionalidad:</strong> ' +
                               response.data.info[0].locacion_nacimiento;
                          nacimiento_piloto.innerHTML =
-                              'Fecha Nacimiento: ' + response.data.info[0].nacimiento;
+                              '<strong>Fecha Nacimiento:</strong> ' + response.data.info[0].nacimiento;
                          numero_piloto.innerHTML =
-                              'Num. Piloto: ' + response.data.info[0].numero;
+                              '<strong>Num. Piloto:</strong> ' + response.data.info[0].numero;
                          victorias_piloto.innerHTML =
-                              'Victorias: ' + response.data.info[0].victorias;
+                              '<strong>Victorias:</strong> ' + response.data.info[0].victorias;
 
                          // Agregando info a la tabla
                          const tamanio = response.data.response.length;
@@ -364,18 +364,18 @@ btn_search.addEventListener('click', (event) => {
                          // Agregando info a la primera vista
                          imagen_primera_vista.src = response.data.info[0].imagen;
                          nombre_primera_vista.innerHTML =
-                              'Nombre: ' + response.data.info[0].nombre;
+                              '<strong>Nombre:</strong> ' + response.data.info[0].nombre;
                          pais_primera_vista.innerHTML =
-                              'Pais: ' + response.data.info[0].pais;
+                              '<strong>Pais:</strong> ' + response.data.info[0].pais;
                          longuitud_primera_vista.innerHTML =
-                              'Longuitud: ' + response.data.info[0].longitud;
+                              '<strong>Longuitud:</strong> ' + response.data.info[0].longitud;
                          vueltas_primera_vista.innerHTML =
-                              'Num. Vueltas: ' + response.data.info[0].vueltas;
+                              '<strong>Num. Vueltas:</strong> ' + response.data.info[0].vueltas;
                          distancia_primera_vista.innerHTML =
-                              'Distancia Total: ' +
+                              '<strong>Distancia Total:</strong> ' +
                               response.data.info[0].distancia_total;
                          record_primera_vista.innerHTML =
-                              'Record primera vuelta: ' +
+                              '<strong>Record primera vuelta:</strong> ' +
                               response.data.info[0].record_vuelta;
 
                          // Agregando info a la tabla
@@ -514,22 +514,22 @@ btn_search.addEventListener('click', (event) => {
                          // Agregando info a la primera vista
                          imagen_primera_vista.src = response.data.info[0].imagen;
                          nombre_equipo.innerHTML =
-                              'Nombre: ' + response.data.info[0].nombre;
+                              '<strong>Nombre:</strong> ' + response.data.info[0].nombre;
                          director_equipo.innerHTML =
-                              'Director Deportivo: ' +
+                              '<strong>Director Deportivo:</strong> ' +
                               response.data.info[0].director_deportivo;
                          motor_equipo.innerHTML =
-                              'Motor: ' + response.data.info[0].motor;
+                              '<strong>Motor:</strong> ' + response.data.info[0].motor;
                          pais_equipo.innerHTML =
-                              'Pais: ' + response.data.info[0].pais;
+                              '<strong>Ubicación:</strong> ' + response.data.info[0].pais;
                          debut_equipo.innerHTML =
-                              'Debut Equipo: ' + response.data.info[0].debut;
+                              '<strong>Debut Equipo:</strong> ' + response.data.info[0].debut;
                          chasis_equipo.innerHTML =
-                              'Chasis Actual: ' + response.data.info[0].chasis_actual;
+                              '<strong>Chasis Actual:</strong> ' + response.data.info[0].chasis_actual;
                          campeonatos_equipo.innerHTML =
-                              'Campeonatos: ' + response.data.info[0].campeonatos;
+                              '<strong>Campeonatos:</strong> ' + response.data.info[0].campeonatos;
                          puntos_equipo.innerHTML =
-                              'Puntos: ' + response.data.info[0].puntos;
+                              '<strong>Puntos:</strong> ' + response.data.info[0].puntos;
 
                          // Agregando info a la tabla
                          const tamanio = response.data.response.length;
